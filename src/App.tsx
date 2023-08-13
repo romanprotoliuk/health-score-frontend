@@ -3,13 +3,15 @@ import Layout from "./components/common/layout";
 import { Routes, Route } from "react-router-dom";
 import LoginContainer from "./components/login/LoginContainer";
 import RequireAuth from "./components/common/RequireAuth";
+import Home from "./components/common/Home";
+import HealthForm from "./components/common/HealthForm";
 
 const App = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<div>Home Page</div>} />
+          <Route index element={<HealthForm />} />
 
           <Route element={<RequireAuth />}>
             <Route path="/posts">
