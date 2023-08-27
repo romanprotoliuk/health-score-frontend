@@ -5,6 +5,7 @@ import LoginContainer from "./components/login/LoginContainer";
 import RequireAuth from "./components/common/RequireAuth";
 import Home from "./components/common/Home";
 import HealthForm from "./components/common/HealthForm";
+import ProfilePage from "./components/pages/ProfilePage";
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
              {/* Routes for specific users */}
             <Route path="/users" element={<div>Users Page</div>} />
             <Route path="/comments" element={<div>Comments Page</div>} />
-            <Route path="/profile" element={<div>Profile Page</div>} />
+            <Route path="/profile" element={ <ProfilePage /> } />
           </Route>
           {/* nested example */}
 

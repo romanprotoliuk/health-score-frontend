@@ -89,7 +89,7 @@ export function Step1(props: StepProps) {
       {formData.measurementSystem === "imperial" ? (
         <>
           <TextField
-            label="Height (ft)"
+            label="Feet"
             fullWidth
             margin="normal"
             onChange={handleTextChange("feet")}

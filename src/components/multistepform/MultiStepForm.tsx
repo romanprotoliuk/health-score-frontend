@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Container, Step, StepLabel, Stepper } from "@mui/material";
 import { FormData } from "./FormTypes";
+import { useNavigate } from "react-router-dom";
 
 import {
   Step1,
@@ -63,17 +64,19 @@ function MultiStepForm() {
 
     glucoseLevels: 0,
   });
+  const navigate = useNavigate();
 
   const handleNext = () => {
     if (activeStep === steps.length - 1) {
-      handleFinish();
+      handleFinish();  
       return;
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleFinish = () => {
-    // call my mutation here
+     // integrate health algo instance here
+    navigate("/profile");
     console.log(formData);
   };
 
