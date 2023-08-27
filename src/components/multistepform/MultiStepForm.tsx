@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Container, Step, StepLabel, Stepper } from "@mui/material";
 import { FormData } from "./FormTypes";
+import { stepFormData } from "./stepFormTypes";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -64,6 +65,54 @@ function MultiStepForm() {
 
     glucoseLevels: 0,
   });
+
+  const [stepFormData, setStepFormData] = useState<stepFormData>({
+    age: 0,
+    gender: "",
+    weight: 0, // Weight in kilograms
+    height: 0, // Height in centimeters
+  
+    activityData: {
+      activityType: "",
+      duration: "",
+      stepsPerDay: 0,
+      heartRate: 0,
+      recoveryTime: 0,
+    },
+  
+    sleepData: {
+      nights: [],
+    },
+  
+    stressLevelData: {
+      dailyRoutine: 6,
+      emotionalWellBeing: 6,
+      socialSupport: 6,
+      workRelatedStress: 6,
+      stressCopingMechanisms: 6,
+      lifeEvents: 6,
+      stressPerception: 6,
+    },
+  
+    smokingStatus: "",
+  
+    alcoholConsumption: 0,
+  
+    systolicBP: 0,
+    diastolicBP: 0,
+  
+    glucoseLevels: 0,
+  
+    dietaryHabitsData: {
+      dietType: "",
+      mealPortions: "",
+      junkFoodIntake: "",
+      hydration: 0,
+      addedSugarsIntake: 0,
+    },
+  })
+
+
   const navigate = useNavigate();
 
   const handleNext = () => {
@@ -77,7 +126,7 @@ function MultiStepForm() {
   const handleFinish = () => {
      // integrate health algo instance here
     navigate("/profile");
-    console.log(formData);
+    console.log("current form data", formData);
   };
 
   const handleBack = () => {

@@ -3,7 +3,7 @@ import Layout from "./components/common/layout";
 import { Routes, Route } from "react-router-dom";
 import LoginContainer from "./components/login/LoginContainer";
 import RequireAuth from "./components/common/RequireAuth";
-import Home from "./components/common/Home";
+import Home from "./components/pages/Home";
 import HealthForm from "./components/common/HealthForm";
 import ProfilePage from "./components/pages/ProfilePage";
 

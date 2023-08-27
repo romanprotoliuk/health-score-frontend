@@ -335,7 +335,7 @@ export function Step4(props: StepProps) {
     totalTime: 0,
     remTime: 0,
     deepTime: 0,
-    heartRate2: 0,
+    heartRate: 0,
     heartRateVariability: 0,
   });
 
@@ -385,7 +385,7 @@ export function Step4(props: StepProps) {
       totalTime: 0,
       remTime: 0,
       deepTime: 0,
-      heartRate2: 0,
+      heartRate: 0,
       heartRateVariability: 0,
     });
   };
@@ -440,7 +440,7 @@ export function Step4(props: StepProps) {
                     Deep: {night.deepTime}
                   </Typography>
                   <Typography variant="body1" style={{ marginRight: "10px" }}>
-                    Heart Rate: {night.heartRate2}
+                    Heart Rate: {night.heartRate}
                   </Typography>
                   <Typography variant="body1" style={{ marginRight: "10px" }}>
                     HRV: {night.heartRateVariability}
@@ -516,7 +516,7 @@ export function Step4(props: StepProps) {
                 style={{ flex: "1", marginRight: "10px" }}
                 label="Heart Rate"
                 type="number"
-                onChange={handleInputChange("heartRate2")}
+                onChange={handleInputChange("heartRate")}
               />
               <TextField
                 style={{ flex: "1" }}

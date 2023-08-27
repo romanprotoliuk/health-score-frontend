@@ -3,7 +3,7 @@ export interface NightData {
   totalTime: number;
   remTime: number;
   deepTime: number;
-  heartRate2: number;
+  heartRate: number;
   heartRateVariability: number;
 }
 
