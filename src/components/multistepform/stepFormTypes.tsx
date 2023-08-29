@@ -36,8 +36,16 @@ export interface NightData {
   export interface stepFormData {
     age?: number;
     gender?: string;
-    weight?: number;
-    height?: number;
+
+    measurementSystem?: string
+    weightKG?: number;
+    heightCM?: number;
+
+    heightFT?: number 
+    heightIN?: number,
+
+    weightLBS?: number
+
     systolicBP?: number;
     diastolicBP?: number;
     smokingStatus?: string;
@@ -49,3 +57,7 @@ export interface NightData {
     stressLevelData?: StressLevels;
   }
   
+  export interface StepFormProps {
+    stepFormData: stepFormData
+    setStepFormData: React.Dispatch<React.SetStateAction<stepFormData>>
+  }

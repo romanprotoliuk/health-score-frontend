@@ -4,17 +4,15 @@ import { FormData } from "./FormTypes";
 import { stepFormData } from "./stepFormTypes";
 import { useNavigate } from "react-router-dom";
 
-import {
-  Step1,
-  Step2,
-  Step3,
-  Step4,
-  Step5,
-  Step6,
-  Step7,
-  Step8,
-  Step9,
-} from "./FormSteps/FormSteps";
+import { Step1 } from "./FormSteps/Step1";
+import { Step2 } from "./FormSteps/Step2";
+import { Step3 } from "./FormSteps/Step3";
+import { Step4 } from "./FormSteps/Step4";
+import { Step5 } from "./FormSteps/Step5";
+import { Step6 } from "./FormSteps/Step6";
+import { Step7 } from "./FormSteps/Step7";
+import { Step8 } from "./FormSteps/Step8";
+import { Step9 } from "./FormSteps/Step9";
 
 const steps = [
   "User Info",
@@ -69,8 +67,12 @@ function MultiStepForm() {
   const [stepFormData, setStepFormData] = useState<stepFormData>({
     age: 0,
     gender: "",
-    weight: 0, // Weight in kilograms
-    height: 0, // Height in centimeters
+    measurementSystem: "",
+    weightKG: 0, // Weight in kilograms
+    heightCM: 0, // Height in centimeters
+    heightFT: 0, // height in feet 
+    heightIN: 0, // height in inches
+    weightLBS: 0, // weight in lbs 
   
     activityData: {
       activityType: "",
@@ -127,6 +129,7 @@ function MultiStepForm() {
      // integrate health algo instance here
     navigate("/profile");
     console.log("current form data", formData);
+    console.log("new form data", stepFormData)
   };
 
   const handleBack = () => {
@@ -146,31 +149,31 @@ function MultiStepForm() {
       <Container maxWidth="md">
         <div style={{ marginTop: "40px" }}>
           {activeStep === 0 && (
-            <Step1 formData={formData} setFormData={setFormData} />
+            <Step1 stepFormData={stepFormData} setStepFormData={setStepFormData} />
           )}
           {activeStep === 1 && (
-            <Step2 formData={formData} setFormData={setFormData} />
+            <Step2 stepFormData={stepFormData} setStepFormData={setStepFormData} />
           )}
           {activeStep === 2 && (
-            <Step3 formData={formData} setFormData={setFormData} />
+            <Step3 stepFormData={stepFormData} setStepFormData={setStepFormData} />
           )}
           {activeStep === 3 && (
-            <Step4 formData={formData} setFormData={setFormData} />
+            <Step4 stepFormData={stepFormData} setStepFormData={setStepFormData} />
           )}
           {activeStep === 4 && (
-            <Step5 formData={formData} setFormData={setFormData} />
+            <Step5 stepFormData={stepFormData} setStepFormData={setStepFormData} />
           )}
           {activeStep === 5 && (
-            <Step6 formData={formData} setFormData={setFormData} />
+            <Step6 stepFormData={stepFormData} setStepFormData={setStepFormData} />
           )}
           {activeStep === 6 && (
-            <Step7 formData={formData} setFormData={setFormData} />
+            <Step7 stepFormData={stepFormData} setStepFormData={setStepFormData} />
           )}
           {activeStep === 7 && (
-            <Step8 formData={formData} setFormData={setFormData} />
+            <Step8 stepFormData={stepFormData} setStepFormData={setStepFormData} />
           )}
           {activeStep === 8 && (
-            <Step9 formData={formData} setFormData={setFormData} />
+            <Step9 stepFormData={stepFormData} setStepFormData={setStepFormData} />
           )}
         </div>
         <div style={{ marginTop: "40px" }}>
