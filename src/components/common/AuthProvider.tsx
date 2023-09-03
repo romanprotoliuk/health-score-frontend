@@ -19,8 +19,6 @@ interface User {
 
 const AuthContext = React.createContext<AuthContextData | null>(null)
 
-// const AuthContext = React.createContext<AuthContextData || null>(null);
-
 const AuthProvider: FC<Props> = ({ children }) => {
 
     const [user, setUser] = React.useState<User | null>(null)

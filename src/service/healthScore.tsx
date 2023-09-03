@@ -115,18 +115,18 @@ export function getHealthScore(
   gender: Gender,
   weight: number,
   height: number,
+  weightUnit: string,
+  heightUnit: string,
   systolicBP: number,
   diastolicBP: number,
   smokingStatus: string,
   glucoseLevels: number,
   alcoholConsumption: number,
   activityData: ActivityData,
-  sleepData: any, // You should define a proper type for this
+  sleepData: any,
   dietaryHabitsData: DietaryHabitsData,
-  stressLevelData: any, // You should define a proper type for this
-  weightUnit: string = "kg",
-  heightUnit: string = "cm",
-  inches: number = 0
+  stressLevelData: any,
+  inches: number
 ): HealthScoreResult {
   // Validations
   if (
@@ -160,6 +160,7 @@ export function getHealthScore(
   }
 
   const bmiResult = getBmiScore(weight, height, weightUnit, heightUnit, inches);
+  console.log(bmiResult)
   const bloodPressureResult = getBloodPressureScore(systolicBP, diastolicBP);
   const smokingResult = getSmokingScore(smokingStatus);
   const glucoseResult = getGlucoseLevelsScore(glucoseLevels);

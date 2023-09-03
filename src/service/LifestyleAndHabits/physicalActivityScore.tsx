@@ -60,7 +60,7 @@ export function getPhysicalActivityScore(activityData: ActivityData) {
     );
   }
 
-  if (!duration || typeof duration !== "number" || duration < 0) {
+  if (!+duration || typeof +duration !== "number" || +duration < 0) {
     throw new Error(
       "Invalid duration. Please provide a non-negative number for activity duration."
     );
@@ -88,7 +88,7 @@ export function getPhysicalActivityScore(activityData: ActivityData) {
   const activityLevel = activityLevels[activityType.toLowerCase()];
   const scoreFromDuration = Math.min(
     100,
-    activityLevel.score * (duration / 24)
+    activityLevel.score * (+duration / 24)
   ); // Normalize the score for a 24-hour period
 
   // Calculate the Physical Activity Score based on the steps per day
@@ -98,7 +98,7 @@ export function getPhysicalActivityScore(activityData: ActivityData) {
   const combinedScore = (scoreFromDuration + stepsScore) / 2;
 
   // Round the values for a cleaner output
-  const roundedDuration = Math.round(duration * 100) / 100; // Round to two decimal places
+  const roundedDuration = Math.round(+duration * 100) / 100; // Round to two decimal places
   const roundedStepsPerDay = Math.round(stepsPerDay * 100) / 100; // Round to two decimal places
   const roundedHeartRate = Math.round(heartRate * 100) / 100; // Round to two decimal places
   const roundedRecoveryTime = Math.round(recoveryTime * 100) / 100; // Round to two decimal places

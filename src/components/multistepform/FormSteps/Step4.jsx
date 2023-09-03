@@ -4,8 +4,6 @@ import { Typography, Button, TextField } from "@mui/material";
 export function Step4(props) {
   const { stepFormData, setStepFormData } = props;
 
-  console.log(stepFormData);
-
   const [nightData, setNightData] = useState({
     date: "",
     totalTime: 0,

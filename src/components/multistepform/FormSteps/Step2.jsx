@@ -12,8 +12,6 @@ import {
 export function Step2(props) {
   const { stepFormData, setStepFormData } = props;
 
-  console.log(stepFormData);
-
   const activityLevels = [
     { label: "Sedentary", value: "sedentary" },
     { label: "Light", value: "light" },

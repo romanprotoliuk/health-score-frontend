@@ -16,8 +16,6 @@ import {
 export function Step1(props: StepFormProps) {
     const { stepFormData, setStepFormData } = props;
   
-    console.log(stepFormData)
-  
     type TextFieldKeys =
       | "age"
       | "heightFT"

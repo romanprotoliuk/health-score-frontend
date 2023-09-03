@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { styled } from "@mui/material/styles";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,6 +9,7 @@ import { FC } from "react";
 import { Box } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthProvider";
+import { UserProfileContext } from "../../../context/UserProfile";
 
 const drawerWidth = 240;
 
@@ -54,10 +56,13 @@ interface Props {
 const Header: FC<Props> = ({ open, handleDrawerOpen }) => {
   const authContext = useAuth();
   const navigate = useNavigate();
+  const { setProfile } = useContext(UserProfileContext);
 
   console.log("authContext", authContext?.user);
 
   const handleLogout = () => {
+    setProfile(null);
+    localStorage.removeItem('userProfile');
     authContext?.clearToken();
     navigate("/login");
   };

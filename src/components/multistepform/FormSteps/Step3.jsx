@@ -11,8 +11,6 @@ import {
 export function Step3(props) {
   const { stepFormData, setStepFormData } = props;
 
-  console.log(stepFormData);
-
   const dietTypes = [
     "balanced",
     "highfiber",

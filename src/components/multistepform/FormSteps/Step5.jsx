@@ -1,12 +1,9 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
-import { StepFormProps } from "../stepFormTypes";
 
 export function Step5(props) {
   const { stepFormData, setStepFormData } = props;
-
-  console.log(stepFormData);
 
   const handleSliderChange = (field) => (event, value) => {
     setStepFormData({

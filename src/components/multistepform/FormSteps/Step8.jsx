@@ -7,8 +7,6 @@ import Slider from "@mui/material/Slider";
 export function Step8(props) {
   const { stepFormData, setStepFormData } = props;
 
-  console.log(stepFormData);
-
   const handleSystolicChange = (event, value) => {
     setStepFormData({
       ...stepFormData,

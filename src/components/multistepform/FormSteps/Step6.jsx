@@ -9,8 +9,6 @@ import Radio from "@mui/material/Radio";
 export function Step6(props) {
   const { stepFormData, setStepFormData } = props;
 
-  console.log(stepFormData);
-
   const handleChange = (event) => {
     setStepFormData({
       ...stepFormData,

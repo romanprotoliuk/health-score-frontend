@@ -9,7 +9,7 @@ export interface NightData {
   
   export interface ActivityData {
     activityType: string;
-    duration: string;
+    duration: number;
     stepsPerDay: number;
     heartRate: number;
     recoveryTime: number;

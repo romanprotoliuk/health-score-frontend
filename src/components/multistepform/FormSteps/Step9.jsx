@@ -7,7 +7,6 @@ import Slider from "@mui/material/Slider";
 export function Step9(props) {
   const { stepFormData, setStepFormData } = props;
 
-  console.log(stepFormData);
   const handleGlucoseChange = (event, value) => {
     setStepFormData({
       ...stepFormData,
