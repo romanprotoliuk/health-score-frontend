@@ -18,7 +18,7 @@ interface Factor {
     lifeEvents: number;
     stressPerception: number;
   }): StressLevelsScoreResult {
-    // Validate input data
+
     if (typeof data !== "object" || data === null) {
       throw new Error("Input data must be an object.");
     }
@@ -65,8 +65,7 @@ interface Factor {
           "Your perception of stress is moderate, contributing to balanced stress levels.",
       },
     ];
-  
-    // Validate factor scores
+    
     for (const factor of factors) {
       if (
         !Number.isInteger(factor.score) ||

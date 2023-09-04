@@ -24,8 +24,7 @@ export function Step1(props: StepFormProps) {
       | "heightCM"
       | "weightKG";
     type SelectFieldKeys = "gender" | "measurementSystem";
-  
-    // Handling changes in TextField
+    
     const handleTextChange =
       (field: TextFieldKeys) => (e: React.ChangeEvent<HTMLInputElement>) => {
         setStepFormData({
@@ -33,8 +32,7 @@ export function Step1(props: StepFormProps) {
           [field]: e.target.value,
         });
       };
-  
-    // Handling changes in Select
+
     const handleSelectChange =
       (field: SelectFieldKeys) => (e: SelectChangeEvent<string>) => {
         setStepFormData({

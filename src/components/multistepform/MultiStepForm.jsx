@@ -1,7 +1,5 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Button, Container, Step, StepLabel, Stepper } from "@mui/material";
-import { FormData } from "./FormTypes";
-import { stepFormData } from "./stepFormTypes";
 import { useNavigate } from "react-router-dom";
 import { processUserData } from "../../service/helpers/processUserData";
 import { getHealthScore } from "../../service/healthScore";
@@ -32,41 +30,6 @@ const steps = [
 const MultiStepForm = () => {
   const [activeStep, setActiveStep] = useState(0);
   const { setProfile } = useContext(UserProfileContext);
-  // const [formData, setFormData] = useState<FormData>({
-  //   age: 0,
-  //   gender: "",
-  //   measurementSystem: "",
-  //   feet: "",
-  //   inches: "",
-  //   cm: "",
-  //   lbs: "",
-  //   kg: "",
-
-  //   activityType: "",
-  //   duration: "",
-  //   stepsPerDay: 0,
-
-  //   nights: [],
-
-  //   stressData: {
-  //     dailyRoutine: 6,
-  //     emotionalWellBeing: 6,
-  //     socialSupport: 6,
-  //     workRelatedStress: 6,
-  //     stressCopingMechanisms: 6,
-  //     lifeEvents: 6,
-  //     stressPerception: 6,
-  //   },
-
-  //   smokingStatus: "",
-
-  //   alcoholConsumption: 0,
-
-  //   systolicBP: 0,
-  //   diastolicBP: 0,
-
-  //   glucoseLevels: 0,
-  // });
 
   const [stepFormData, setStepFormData] = useState({
     age: 0,

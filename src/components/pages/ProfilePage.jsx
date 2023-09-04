@@ -27,8 +27,6 @@ const HealthScoreComponent = ({ data }) => {
   const { finalScore, user, details } = profile;
   const username = authContext?.user?.username ?? "";
 
-  const [isExpanded, setIsExpanded] = useState(false);
-
   const [expandedSection, setExpandedSection] = useState(null);
 
   const myDefault = {
@@ -37,7 +35,7 @@ const HealthScoreComponent = ({ data }) => {
   };
 
   return (
-    <div>
+    <div style={{ maxWidth: "800px", margin: "50px auto 0px auto " }}>
       <div
         style={{
           display: "flex",
@@ -96,151 +94,101 @@ const HealthScoreComponent = ({ data }) => {
 
       <BMIAccordion
         details={details}
-        expanded={isExpanded}
-        onToggle={() => setIsExpanded(!isExpanded)}
+        expanded={expandedSection === "BMI"}
+        onToggle={() =>
+          setExpandedSection(expandedSection !== "BMI" ? "BMI" : null)
+        }
       />
 
       <BloodPressureAccordion
         details={details}
-        expanded={isExpanded}
-        onToggle={() => setIsExpanded(!isExpanded)}
+        expanded={expandedSection === "BloodPressure"}
+        onToggle={() =>
+          setExpandedSection(
+            expandedSection !== "BloodPressure" ? "BloodPressure" : null
+          )
+        }
       />
 
       <GlucoseAccordion
         details={details}
-        expanded={isExpanded}
-        onToggle={() => setIsExpanded(!isExpanded)}
+        expanded={expandedSection === "Glucose"}
+        onToggle={() =>
+          setExpandedSection(expandedSection !== "Glucose" ? "Glucose" : null)
+        }
       />
 
       <SmokingAccordion
         details={details}
-        expanded={isExpanded}
-        onToggle={() => setIsExpanded(!isExpanded)}
+        expanded={expandedSection === "Smoking"}
+        onToggle={() =>
+          setExpandedSection(expandedSection !== "Smoking" ? "Smoking" : null)
+        }
       />
 
       <AlcoholAccordion
         details={details}
-        expanded={isExpanded}
-        onToggle={() => setIsExpanded(!isExpanded)}
+        expanded={expandedSection === "Alcohol"}
+        onToggle={() =>
+          setExpandedSection(expandedSection !== "Alcohol" ? "Alcohol" : null)
+        }
       />
 
-      <h4>Physical Activity</h4>
-      {/* <p>Activity Type: {details.physicalActivity.activityType}</p> */}
-      <p>Duration: {details.physicalActivity.duration}</p>
-      <p>Steps Per Day: {details.physicalActivity.stepsPerDay}</p>
-      {/* <p>Heart Rate: {details.physicalActivity.heartRate}</p> */}
-      {/* <p>Recovery Time: {details.physicalActivity.recoveryTime}</p> */}
-      <p>Score: {details.physicalActivity.score}</p>
-      <p>Description: {details.physicalActivity.description}</p>
+      <PhysicalActivityAccordion
+        details={details}
+        expanded={expandedSection === "PhysicalActivity"}
+        onToggle={() =>
+          setExpandedSection(
+            expandedSection !== "PhysicalActivity" ? "PhysicalActivity" : null
+          )
+        }
+      />
 
-      <h4>Sleep</h4>
-      <p>Average Sleep Duration: {details.sleep.averageSleepDuration}</p>
-      <p>Average REM Time: {details.sleep.averageRemTime}</p>
-      <p>Average Deep Time: {details.sleep.averageDeepTime}</p>
-      <p>Average Resting Heart Rate: {details.sleep.averageRestingHeartRate}</p>
-      <p>Average HRV: {details.sleep.averageHeartRateVariability}</p>
-      <p>Sleep Quality: {details.sleep.sleepQuality}</p>
-      <p>Score: {details.sleep.score}</p>
-      <p>Sleep Quality Label: {details.sleep.sleepQualityLabel}</p>
-      <p>Sleep Identifier: {details.sleep.sleepIdentifier}</p>
+      <SleepAccordion
+        details={details}
+        expanded={expandedSection === "Sleep"}
+        onToggle={() =>
+          setExpandedSection(expandedSection !== "Sleep" ? "Sleep" : null)
+        }
+      />
 
-      <h4>Dietary Habits</h4>
-      <p>Score: {details.dietaryHabits.score}</p>
-      {details.dietaryHabits.influencingFactors.map((factor, index) => (
-        <div key={index}>
-          <p>Factor: {factor.factor}</p>
-          <p>Weight: {factor.weight}</p>
-          <p>Is Normal: {factor.isNormal ? "Yes" : "No"}</p>
-          <p>Description: {factor.description}</p>
-        </div>
-      ))}
+      <DietaryHabitsAccordion
+        details={details}
+        expanded={expandedSection === "DietaryHabits"}
+        onToggle={() =>
+          setExpandedSection(
+            expandedSection !== "DietaryHabits" ? "DietaryHabits" : null
+          )
+        }
+      />
 
-      <h4>Stress Levels</h4>
-      <p>Stress Score: {details.stressLevels.stressScore}</p>
-      {details.stressLevels.factors.map((factor, index) => (
-        <div key={index}>
-          <p>Factor: {factor.factor}</p>
-          <p>Score: {factor.score}</p>
-          <p>Description: {factor.description}</p>
-          <p>Is Normal: {factor.isNormal ? "Yes" : "No"}</p>
-        </div>
-      ))}
+      <StressLevelsAccordion
+        details={details}
+        expanded={expandedSection === "StressLevels"}
+        onToggle={() =>
+          setExpandedSection(
+            expandedSection !== "StressLevels" ? "StressLevels" : null
+          )
+        }
+      />
     </div>
   );
 };
-
-// const UniversalAccordion = ({
-//   title,
-//   details,
-//   skillBarPercent,
-//   expanded,
-//   onToggle,
-// }) => {
-//   if (!details) return null;
-
-//   return (
-//     <Accordion
-//       expanded={expanded}
-//       onChange={onToggle}
-//       className="accordion"
-//       style={{
-//         border: "1px solid #03c8a8",
-//         borderRadius: "8px",
-//         marginBottom: "16px",
-//         position: "static",
-//         boxShadow: "none",
-//       }}
-//     >
-//       <AccordionSummary
-//         expandIcon={<ExpandMoreIcon />}
-//         className="accordion-summary"
-//       >
-//         <div
-//           style={{
-//             display: "flex",
-//             justifyContent: "space-between",
-//             alignItems: "center",
-//             width: "100%",
-//           }}
-//         >
-//           <Typography variant="h6" style={{ fontSize: "22px" }}>
-//             {title}
-//           </Typography>
-//           {skillBarPercent && (
-//             <SkillBar percent={skillBarPercent} color="#f06529" />
-//           )}
-//         </div>
-//       </AccordionSummary>
-//       <AccordionDetails>
-//         <Typography>
-//           {Object.entries(details).map(([key, value], index) => {
-//             if (Array.isArray(value)) {
-//               return value.map((item, idx) => (
-//                 <div key={idx}>
-//                   {Object.entries(item).map(([k, v], i) => (
-//                     <p key={i}>
-//                       {k.charAt(0).toUpperCase() + k.slice(1)}: {v}
-//                     </p>
-//                   ))}
-//                 </div>
-//               ));
-//             }
-//             return (
-//               <p key={index}>
-//                 {key.charAt(0).toUpperCase() + key.slice(1)}: {value}
-//               </p>
-//             );
-//           })}
-//         </Typography>
-//       </AccordionDetails>
-//     </Accordion>
-//   );
-// };
 
 const BloodPressureAccordion = ({ details, expanded, onToggle }) => {
   if (!details || !details.bloodPressure) return null;
 
   const bp = details.bloodPressure;
+  const roundedScore = parseFloat(bp.score.toFixed(1));
+
+  let color;
+  if (roundedScore >= 75) {
+    color = "#05edd1";
+  } else if (roundedScore >= 51) {
+    color = "rgb(254, 109, 16)";
+  } else {
+    color = "rgb(248, 54, 0)";
+  }
 
   return (
     <Accordion
@@ -271,7 +219,7 @@ const BloodPressureAccordion = ({ details, expanded, onToggle }) => {
             Blood Pressure
           </Typography>
 
-          <SkillBar percent={75} color="rgb(254, 109, 16)" />
+          <SkillBar percent={roundedScore} color={color} />
         </div>
       </AccordionSummary>
       <AccordionDetails>
@@ -290,6 +238,16 @@ const BMIAccordion = ({ details, expanded, onToggle }) => {
   if (!details || !details.bmi) return null;
 
   const bmi = details.bmi;
+  const roundedScore = parseFloat(bmi.score.toFixed(1));
+
+  let color;
+  if (roundedScore >= 75) {
+    color = "#05edd1";
+  } else if (roundedScore >= 51) {
+    color = "rgb(254, 109, 16)";
+  } else {
+    color = "rgb(248, 54, 0)";
+  }
 
   return (
     <Accordion
@@ -319,10 +277,7 @@ const BMIAccordion = ({ details, expanded, onToggle }) => {
           <Typography variant="h6" style={{ fontSize: "22px" }}>
             BMI
           </Typography>
-
-          {/* // #05edd1 */}
-          {/* #f06529 */}
-          <SkillBar percent={bmi.score} color="#05edd1" />
+          <SkillBar percent={roundedScore} color={color} />
         </div>
       </AccordionSummary>
       <AccordionDetails>
@@ -339,6 +294,16 @@ const SmokingAccordion = ({ details, expanded, onToggle }) => {
   if (!details || !details.smoking) return null;
 
   const smoking = details.smoking;
+  const roundedScore = parseFloat(smoking.score.toFixed(1));
+
+  let color;
+  if (roundedScore >= 75) {
+    color = "#05edd1";
+  } else if (roundedScore >= 51) {
+    color = "rgb(254, 109, 16)";
+  } else {
+    color = "rgb(248, 54, 0)";
+  }
 
   return (
     <Accordion
@@ -369,7 +334,7 @@ const SmokingAccordion = ({ details, expanded, onToggle }) => {
             Smoking
           </Typography>
 
-          <SkillBar percent={smoking.score} color="#05edd1" />
+          <SkillBar percent={roundedScore} color={color} />
         </div>
       </AccordionSummary>
       <AccordionDetails>
@@ -387,6 +352,16 @@ const GlucoseAccordion = ({ details, expanded, onToggle }) => {
   if (!details || !details.glucose) return null;
 
   const glucose = details.glucose;
+  const roundedScore = parseFloat(glucose.score.toFixed(1));
+
+  let color;
+  if (roundedScore >= 75) {
+    color = "#05edd1";
+  } else if (roundedScore >= 51) {
+    color = "rgb(254, 109, 16)";
+  } else {
+    color = "rgb(248, 54, 0)";
+  }
 
   return (
     <Accordion
@@ -417,7 +392,7 @@ const GlucoseAccordion = ({ details, expanded, onToggle }) => {
             Glucose
           </Typography>
 
-          <SkillBar percent={55} color="rgb(248, 54, 0)" />
+          <SkillBar percent={roundedScore} color={color} />
         </div>
       </AccordionSummary>
       <AccordionDetails>
@@ -435,6 +410,16 @@ const AlcoholAccordion = ({ details, expanded, onToggle }) => {
   if (!details || !details.alcohol) return null;
 
   const alcohol = details.alcohol;
+  const roundedScore = parseFloat(alcohol.score.toFixed(1));
+
+  let color;
+  if (roundedScore >= 75) {
+    color = "#05edd1";
+  } else if (roundedScore >= 51) {
+    color = "rgb(254, 109, 16)";
+  } else {
+    color = "rgb(248, 54, 0)";
+  }
 
   return (
     <Accordion
@@ -465,7 +450,7 @@ const AlcoholAccordion = ({ details, expanded, onToggle }) => {
             Alcohol
           </Typography>
 
-          <SkillBar percent={alcohol.score} color="#05edd1" />
+          <SkillBar percent={roundedScore} color={color} />
         </div>
       </AccordionSummary>
       <AccordionDetails>
@@ -473,6 +458,260 @@ const AlcoholAccordion = ({ details, expanded, onToggle }) => {
           <p>Value: {alcohol.value}</p>
           <p>Score: {alcohol.score}</p>
           <p>Category: {alcohol.category}</p>
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  );
+};
+
+const PhysicalActivityAccordion = ({ details, expanded, onToggle }) => {
+  if (!details || !details.physicalActivity) return null;
+
+  const pa = details.physicalActivity;
+  const roundedScore = parseFloat(pa.score.toFixed(1));
+
+  let color;
+  if (roundedScore >= 75) {
+    color = "#05edd1";
+  } else if (roundedScore >= 51) {
+    color = "rgb(254, 109, 16)";
+  } else {
+    color = "rgb(248, 54, 0)";
+  }
+
+  return (
+    <Accordion
+      expanded={expanded}
+      onChange={onToggle}
+      className="accordion"
+      style={{
+        border: "1px solid #03c8a8",
+        borderRadius: "8px",
+        marginBottom: "16px",
+        position: "static",
+        boxShadow: "none",
+      }}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        className="accordion-summary"
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Typography variant="h6" style={{ fontSize: "22px" }}>
+            Physical Activity
+          </Typography>
+
+          <SkillBar percent={roundedScore} color={color} />
+        </div>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography>
+          <p>Activity Type: {pa.activityType}</p>
+          <p>Duration: {pa.duration}</p>
+          <p>Steps Per Day: {pa.stepsPerDay}</p>
+          <p>Heart Rate: {pa.heartRate}</p>
+          <p>Recovery Time: {pa.recoveryTime}</p>
+          <p>Score: {pa.score}</p>
+          <p>Description: {pa.description}</p>
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  );
+};
+
+const SleepAccordion = ({ details, expanded, onToggle }) => {
+  if (!details || !details.sleep) return null;
+
+  const sleep = details.sleep;
+  const roundedScore = parseFloat(sleep.score.toFixed(1));
+
+  let color;
+  if (roundedScore >= 75) {
+    color = "#05edd1";
+  } else if (roundedScore >= 51) {
+    color = "rgb(254, 109, 16)";
+  } else {
+    color = "rgb(248, 54, 0)";
+  }
+
+  return (
+    <Accordion
+      expanded={expanded}
+      onChange={onToggle}
+      className="accordion"
+      style={{
+        border: "1px solid #03c8a8",
+        borderRadius: "8px",
+        marginBottom: "16px",
+        position: "static",
+        boxShadow: "none",
+      }}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        className="accordion-summary"
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Typography variant="h6" style={{ fontSize: "22px" }}>
+            Sleep
+          </Typography>
+
+          <SkillBar percent={roundedScore} color={color} />
+        </div>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography>
+          <p>Average Sleep Duration: {sleep.averageSleepDuration}</p>
+          <p>Average REM Time: {sleep.averageRemTime}</p>
+          <p>Average Deep Time: {sleep.averageDeepTime}</p>
+          <p>Average Resting Heart Rate: {sleep.averageRestingHeartRate}</p>
+          <p>Average HRV: {sleep.averageHeartRateVariability}</p>
+          <p>Sleep Quality: {sleep.sleepQuality}</p>
+          <p>Score: {roundedScore}</p>
+          <p>Sleep Quality Label: {sleep.sleepQualityLabel}</p>
+          <p>Sleep Identifier: {sleep.sleepIdentifier}</p>
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  );
+};
+
+const DietaryHabitsAccordion = ({ details, expanded, onToggle }) => {
+  if (!details || !details.dietaryHabits) return null;
+
+  const dietaryHabits = details.dietaryHabits;
+  const roundedScore = parseFloat(dietaryHabits.score.toFixed(1));
+
+  let color;
+  if (roundedScore >= 75) {
+    color = "#05edd1";
+  } else if (roundedScore >= 51) {
+    color = "rgb(254, 109, 16)";
+  } else {
+    color = "rgb(248, 54, 0)";
+  }
+
+  return (
+    <Accordion
+      expanded={expanded}
+      onChange={onToggle}
+      className="accordion"
+      style={{
+        border: "1px solid #03c8a8",
+        borderRadius: "8px",
+        marginBottom: "16px",
+        position: "static",
+        boxShadow: "none",
+      }}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        className="accordion-summary"
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Typography variant="h6" style={{ fontSize: "22px" }}>
+            Dietary Habits
+          </Typography>
+
+          <SkillBar percent={roundedScore} color={color} />
+        </div>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography>
+          <p>Score: {roundedScore}</p>
+          {dietaryHabits.influencingFactors.map((factor, index) => (
+            <div key={index}>
+              <p>Factor: {factor.factor}</p>
+              <p>Weight: {factor.weight}</p>
+              <p>Is Normal: {factor.isNormal ? "Yes" : "No"}</p>
+              <p>Description: {factor.description}</p>
+            </div>
+          ))}
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  );
+};
+
+const StressLevelsAccordion = ({ details, expanded, onToggle }) => {
+  if (!details || !details.stressLevels) return null;
+
+  const stressLevels = details.stressLevels;
+  const roundedScore = parseFloat(stressLevels.stressScore.toFixed(1));
+
+  let color;
+  if (roundedScore >= 75) {
+    color = "#05edd1";
+  } else if (roundedScore >= 51) {
+    color = "rgb(254, 109, 16)";
+  } else {
+    color = "rgb(248, 54, 0)";
+  }
+
+  return (
+    <Accordion
+      expanded={expanded}
+      onChange={onToggle}
+      className="accordion"
+      style={{
+        border: "1px solid #03c8a8",
+        borderRadius: "8px",
+        marginBottom: "16px",
+        position: "static",
+        boxShadow: "none",
+      }}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        className="accordion-summary"
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Typography variant="h6" style={{ fontSize: "22px" }}>
+            Stress Levels
+          </Typography>
+
+          <SkillBar percent={roundedScore} color={color} />
+        </div>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography>
+          <p>Stress Score: {roundedScore}</p>
+          {stressLevels.factors.map((factor, index) => (
+            <div key={index}>
+              <p>Factor: {factor.factor}</p>
+              <p>Score: {factor.score}</p>
+              <p>Description: {factor.description}</p>
+              <p>Is Normal: {factor.isNormal ? "Yes" : "No"}</p>
+            </div>
+          ))}
         </Typography>
       </AccordionDetails>
     </Accordion>

@@ -7,7 +7,7 @@ import {
   MenuItem,
   TextField,
   Slider,
-} from "@mui/material"; // Import necessary types
+} from "@mui/material";
 
 export function Step2(props) {
   const { stepFormData, setStepFormData } = props;
