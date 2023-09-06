@@ -65,7 +65,7 @@ export function Step2(props) {
     <div>
       <Typography variant="h5">Average Weekly Physical Activity</Typography>
       <FormControl fullWidth margin="normal">
-        <InputLabel>Activity Type</InputLabel>
+        <InputLabel>Activity Level</InputLabel>
         <Select
           value={stepFormData?.activityData?.activityType || ""}
           onChange={handleSelectChange}

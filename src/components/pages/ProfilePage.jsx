@@ -74,8 +74,10 @@ const HealthScoreComponent = ({ data }) => {
           marginBottom: "50px",
         }}
       >
-        <p style={myDefault}>Age: {user.age}</p>
-        <p style={myDefault}>{user.gender}</p>
+        <p style={myDefault}>{user.age}</p>
+        <p style={myDefault}>
+          {user.gender.charAt(0).toUpperCase() + user.gender.slice(1)}
+        </p>
       </div>
 
       <h4
@@ -222,12 +224,19 @@ const BloodPressureAccordion = ({ details, expanded, onToggle }) => {
         </div>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>
+        <div
+          style={{
+            display: "flex",
+            width: "30%",
+            justifyContent: "space-between",
+          }}
+        >
           <p>Systolic: {bp.value.systolic}</p>
           <p>Diastolic: {bp.value.diastolic}</p>
-          <p>Score: {bp.score}</p>
-          <p>Category: {bp.category}</p>
-        </Typography>
+        </div>
+        <div>
+          <p>{bp.category}</p>
+        </div>
       </AccordionDetails>
     </Accordion>
   );
@@ -247,6 +256,10 @@ const BMIAccordion = ({ details, expanded, onToggle }) => {
   } else {
     color = "rgb(248, 54, 0)";
   }
+
+  // border: bmi.isNormal
+  //         ? "1px solid #03c8a8"
+  //         : "1px solid rgb(248, 54, 0)",
 
   return (
     <Accordion
@@ -281,8 +294,8 @@ const BMIAccordion = ({ details, expanded, onToggle }) => {
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
-          <p>BMI Value: {bmi.value}</p>
-          <p>BMI Score: {bmi.score}</p>
+          <p>BMI: {bmi.value.toFixed(1)}</p>
+          <p>Normal Range: {bmi.normalRange}</p>
         </Typography>
       </AccordionDetails>
     </Accordion>
@@ -338,9 +351,9 @@ const SmokingAccordion = ({ details, expanded, onToggle }) => {
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
-          <p>Value: {smoking.value}</p>
-          <p>Score: {smoking.score}</p>
-          <p>Normal Range: {smoking.normalRange}</p>
+          <p>
+            {smoking.value.charAt(0).toUpperCase() + smoking.value.slice(1)}
+          </p>
         </Typography>
       </AccordionDetails>
     </Accordion>
@@ -396,9 +409,8 @@ const GlucoseAccordion = ({ details, expanded, onToggle }) => {
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
-          <p>Value: {glucose.value}</p>
-          <p>Score: {glucose.score}</p>
-          <p>Category: {glucose.category}</p>
+          <p>{glucose.value}mg/dL</p>
+          <p>{glucose.category}</p>
         </Typography>
       </AccordionDetails>
     </Accordion>
@@ -454,9 +466,7 @@ const AlcoholAccordion = ({ details, expanded, onToggle }) => {
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
-          <p>Value: {alcohol.value}</p>
-          <p>Score: {alcohol.score}</p>
-          <p>Category: {alcohol.category}</p>
+          <p>Alcohol consumption: {alcohol.value} drinks a week</p>
         </Typography>
       </AccordionDetails>
     </Accordion>
@@ -512,13 +522,13 @@ const PhysicalActivityAccordion = ({ details, expanded, onToggle }) => {
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
-          <p>Activity Type: {pa.activityType}</p>
+          <p>
+            Activity Level:{" "}
+            {pa.activityType.charAt(0).toUpperCase() + pa.activityType.slice(1)}
+          </p>
           <p>Duration: {pa.duration}</p>
           <p>Steps Per Day: {pa.stepsPerDay}</p>
-          <p>Heart Rate: {pa.heartRate}</p>
-          <p>Recovery Time: {pa.recoveryTime}</p>
-          <p>Score: {pa.score}</p>
-          <p>Description: {pa.description}</p>
+          <p>{pa.description}</p>
         </Typography>
       </AccordionDetails>
     </Accordion>
@@ -574,15 +584,7 @@ const SleepAccordion = ({ details, expanded, onToggle }) => {
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
-          <p>Average Sleep Duration: {sleep.averageSleepDuration}</p>
-          <p>Average REM Time: {sleep.averageRemTime}</p>
-          <p>Average Deep Time: {sleep.averageDeepTime}</p>
-          <p>Average Resting Heart Rate: {sleep.averageRestingHeartRate}</p>
-          <p>Average HRV: {sleep.averageHeartRateVariability}</p>
-          <p>Sleep Quality: {sleep.sleepQuality}</p>
-          <p>Score: {roundedScore}</p>
-          <p>Sleep Quality Label: {sleep.sleepQualityLabel}</p>
-          <p>Sleep Identifier: {sleep.sleepIdentifier}</p>
+          <p>Sleep Duration: {sleep.averageSleepDuration} /hours per week</p>
         </Typography>
       </AccordionDetails>
     </Accordion>
@@ -638,13 +640,9 @@ const DietaryHabitsAccordion = ({ details, expanded, onToggle }) => {
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
-          <p>Score: {roundedScore}</p>
           {dietaryHabits.influencingFactors.map((factor, index) => (
             <div key={index}>
-              <p>Factor: {factor.factor}</p>
-              <p>Weight: {factor.weight}</p>
-              <p>Is Normal: {factor.isNormal ? "Yes" : "No"}</p>
-              <p>Description: {factor.description}</p>
+              <p>{factor.factor}</p>
             </div>
           ))}
         </Typography>
@@ -667,6 +665,16 @@ const StressLevelsAccordion = ({ details, expanded, onToggle }) => {
   } else {
     color = "rgb(248, 54, 0)";
   }
+
+  const camelCaseToSentence = (str) => {
+    // Add space before all uppercase letters and capitalize the first letter
+    const result = str
+      .replace(/([A-Z])/g, " $1")
+      .toLowerCase()
+      .replace(/^\w/, (char) => char.toUpperCase());
+
+    return result;
+  };
 
   return (
     <Accordion
@@ -702,13 +710,17 @@ const StressLevelsAccordion = ({ details, expanded, onToggle }) => {
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
-          <p>Stress Score: {roundedScore}</p>
           {stressLevels.factors.map((factor, index) => (
-            <div key={index}>
-              <p>Factor: {factor.factor}</p>
-              <p>Score: {factor.score}</p>
-              <p>Description: {factor.description}</p>
-              <p>Is Normal: {factor.isNormal ? "Yes" : "No"}</p>
+            <div
+              style={{ marginTop: "20px", marginBottom: "20px" }}
+              key={index}
+            >
+              <h4 style={{ marginBlockStart: "0em", marginBlockEnd: "0em" }}>
+                {camelCaseToSentence(factor.factor)}
+              </h4>
+              <p style={{ marginBlockStart: "0em", marginBlockEnd: "0em" }}>
+                {factor.description}
+              </p>
             </div>
           ))}
         </Typography>
