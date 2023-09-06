@@ -66,7 +66,6 @@ export function Step5(props) {
       {stressFactors.map(({ factor, label, description }) => (
         <div key={factor} style={{ margin: "35px 0px" }}>
           <Typography gutterBottom>{label}</Typography>
-          <Typography variant="body2">{description}</Typography>
           <Slider
             value={stepFormData.stressLevelData?.[factor] ?? 0}
             onChange={handleSliderChange(factor)}

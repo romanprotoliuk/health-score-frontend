@@ -61,7 +61,6 @@ const HealthScoreComponent = ({ data }) => {
       <h3
         style={{
           marginTop: "50px",
-
           marginBlockEnd: "0",
         }}
       >

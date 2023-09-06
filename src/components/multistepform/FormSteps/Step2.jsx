@@ -22,9 +22,9 @@ export function Step2(props) {
 
   const stepsPerDayMarks = [
     { value: 0, label: "0" },
-    { value: 5000, label: "Sedentary" },
-    { value: 10000, label: "Active" }, // Average for a good active lifestyle
-    { value: 15000, label: "Very Active" },
+    { value: 5000, label: "5,000" },
+    { value: 10000, label: "10,000" }, // Average for a good active lifestyle
+    { value: 15000, label: "15,000" },
     { value: 20000, label: "20k+" },
   ];
 

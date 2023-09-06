@@ -21,12 +21,12 @@ const LoginContainer = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const successRedirectUrl = location.state?.from?.pathname ?? "/";
+  // const successRedirectUrl = location.state?.from?.pathname ?? "/";
 
   useEffect(() => {
     if (data && authActions) {
         authActions.saveToken(data.login)
-        navigate(successRedirectUrl, { replace: true })
+        navigate("/")
     }
   }, [data, authActions])
     
@@ -37,7 +37,6 @@ const LoginContainer = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-        console.log(values)
       login({
         variables: {
             username: values.username,
@@ -87,7 +86,7 @@ const LoginContainer = () => {
           </Button>
           {
             error && <Alert severity="warning" sx={{marginTop: "10px"}}>{error.message}, please try again</Alert>
-        }
+          }
         </form>
         <Loader open={loading} />
         

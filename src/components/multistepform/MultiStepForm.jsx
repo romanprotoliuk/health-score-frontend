@@ -122,13 +122,15 @@ const MultiStepForm = () => {
 
   return (
     <Container>
-      <Stepper activeStep={activeStep}>
-        {steps.map((_, index) => (
-          <Step key={index}>
-            <StepLabel />
-          </Step>
-        ))}
-      </Stepper>
+      <Container maxWidth="md" style={{ marginTop: "80px" }}>
+        <Stepper activeStep={activeStep}>
+          {steps.map((_, index) => (
+            <Step key={index}>
+              <StepLabel />
+            </Step>
+          ))}
+        </Stepper>
+      </Container>
 
       <Container maxWidth="md">
         <div style={{ marginTop: "40px" }}>

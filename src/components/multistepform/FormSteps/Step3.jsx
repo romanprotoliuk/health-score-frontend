@@ -105,10 +105,10 @@ export function Step3(props) {
           value={stepFormData.dietaryHabitsData?.junkFoodIntake || ""}
           onChange={handleInputChange("junkFoodIntake")}
         >
-          <MenuItem value="regular">Regular</MenuItem>
+          <MenuItem value="regular">Rarely</MenuItem>
           <MenuItem value="often">Often</MenuItem>
           {/* ... other options ... */}
-          <MenuItem value="rarely">Rarely</MenuItem>
+          <MenuItem value="rarely">Never</MenuItem>
         </Select>
       </FormControl>
 

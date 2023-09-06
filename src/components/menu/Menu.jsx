@@ -1,10 +1,36 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+
+import styled from "@emotion/styled";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useAuth } from "../common/AuthProvider";
+import { UserProfileContext } from "../../context/UserProfile";
+import { Typography } from "@mui/material";
 import "./Menu.css";
 
-import { useState } from "react";
+const StyledLink = styled(Link)({
+  color: "black",
+  textDecoration: "none",
+  fontSize: "14px",
+  marginRight: "5px",
+  marginLeft: "5px",
+});
 
 const Menu = () => {
   const [menuIconSetting, setMenuIconSetting] = useState(false);
+
+  const authContext = useAuth();
+  const navigate = useNavigate();
+  const { setProfile } = useContext(UserProfileContext);
+
+  console.log("authContext", authContext?.user);
+
+  const handleLogout = () => {
+    setProfile(null);
+    localStorage.removeItem("userProfile");
+    authContext?.clearToken();
+    navigate("/login");
+  };
 
   const handleMenuIcon = () => {
     setMenuIconSetting(!menuIconSetting);
@@ -29,123 +55,16 @@ const Menu = () => {
 
         {menuIconSetting && (
           <div className="menu-content w-nav">
-            <div style={{ padding: "10px 0px" }}>
-              <Link
-                style={{
-                  fontWeight: "600",
-                  textTransform: "uppercase",
-                  fontSize: "12px",
-                  color: "#333333",
-                  textDecoration: "none",
-                }}
-                to={"/"}
-              >
-                Home
-              </Link>
-            </div>
-            <div className="div-block-26"></div>
-
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ padding: "10px 0px" }}>
-                <Link
-                  style={{
-                    fontWeight: "600",
-                    textTransform: "uppercase",
-                    fontSize: "12px",
-                    color: "#333333",
-                    textDecoration: "none",
-                  }}
-                  to={"/about"}
-                >
-                  About
-                </Link>
-              </div>
-              <div>
-                <Link
-                  style={{
-                    fontWeight: "600",
-                    textTransform: "uppercase",
-                    fontSize: "12px",
-                    color: "#333333",
-                    textDecoration: "none",
-                  }}
-                  to={"/bmi"}
-                >
-                  BMI Calculator
-                </Link>
-              </div>
-              {/* {isAuthenticated && (
-                <div style={{ marginTop: "10px" }}>
-                  <Link
-                    style={{
-                      fontWeight: "600",
-                      textTransform: "uppercase",
-                      fontSize: "12px",
-                      color: "#333333",
-                      textDecoration: "none",
-                    }}
-                    to="/favorites"
-                  >
-                    My Profile
-                  </Link>
-                </div>
+              {authContext?.user == null ? (
+                <>
+                  <StyledLink to={"/login"}>Login</StyledLink>
+                </>
+              ) : (
+                <>
+                  <StyledLink onClick={handleLogout}>Logout</StyledLink>
+                </>
               )}
-              {isAuthenticated && (
-                <div style={{ marginTop: "10px" }}>
-                  <Link
-                    style={{
-                      fontWeight: "600",
-                      textTransform: "uppercase",
-                      fontSize: "12px",
-                      color: "#333333",
-                      textDecoration: "none",
-                    }}
-                    to="/poses"
-                  >
-                    Poses
-                  </Link>
-                </div>
-              )} */}
-
-              {/* {isAuthenticated && (
-                <div style={{ marginTop: "10px" }}>
-                  <Link
-                    style={{
-                      fontWeight: "600",
-                      textTransform: "uppercase",
-                      fontSize: "12px",
-                      color: "#333333",
-                      textDecoration: "none",
-                    }}
-                    to="/exercises"
-                  >
-                    Exercises
-                  </Link>
-                </div>
-              )} */}
-              {/* 
-              {!isAuthenticated && (
-                <div style={{ marginTop: "10px" }}>
-                  <Link
-                    style={{
-                      fontWeight: "600",
-                      textTransform: "uppercase",
-                      fontSize: "12px",
-                      color: "#333333",
-                      textDecoration: "none",
-                    }}
-                    onClick={() => loginWithRedirect()}
-                  >
-                    Login or Register
-                  </Link>
-                </div>
-              )} */}
-
-              {/* {isAuthenticated && (
-                <div style={{ marginTop: "30px" }}>
-                  <LogoutButton setUserSub={setUserSub} />
-                </div>
-              )} */}
             </div>
           </div>
         )}

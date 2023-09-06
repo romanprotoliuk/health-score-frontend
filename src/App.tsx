@@ -5,7 +5,6 @@ import LoginContainer from "./components/login/LoginContainer";
 import RequireAuth from "./components/common/RequireAuth";
 import HealthForm from "./components/common/HealthForm";
 import ProfilePage from "./components/pages/ProfilePage";
-import Menu from "./components/menu/Menu";
 
 
 const App = () => {
@@ -13,8 +12,8 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<HealthForm />} />
           <Route element={<RequireAuth />}>
+          <Route index element={<HealthForm />} />
             <Route path="/profile" element={ <ProfilePage /> } />
           </Route>
           <Route path="/login" element={<LoginContainer />} />
