@@ -58,6 +58,45 @@ const HealthScoreComponent = ({ data }) => {
         />
       </div>
 
+      <div
+        style={{
+          marginTop: "30px",
+          marginBottom: "30px",
+          backgroundColor: "white",
+          padding: "15px",
+          borderRadius: "10px",
+        }}
+      >
+        <h4>Understanding Your Score:</h4>
+        <p>
+          <strong>Excellent (81-100):</strong> This would signify that the
+          individual has excellent health based on their BMI, blood pressure,
+          and smoking status. The user is generally in the optimal range for all
+          factors.
+        </p>
+        <p>
+          <strong>Very Good (61-80):</strong> This would indicate very good
+          health. There may be slight deviations from the optimal range in one
+          or more factors, but generally, this range still signifies very good
+          health.
+        </p>
+        <p>
+          <strong>Good (41-60):</strong> This range would signify good health,
+          but improvements can be made in one or more areas to achieve optimal
+          health.
+        </p>
+        <p>
+          <strong>Fair (21-40):</strong> A score in this range would be a signal
+          that the individual's health needs attention in one or more areas.
+        </p>
+        <p>
+          <strong>Poor (0-20):</strong> This would indicate a high risk and a
+          need for immediate attention and potentially medical intervention.
+          It's likely that multiple health factors are outside the optimal
+          range.
+        </p>
+      </div>
+
       <h3
         style={{
           marginTop: "50px",

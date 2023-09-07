@@ -259,7 +259,14 @@ export function Step4(props) {
         <Typography variant="h5">Sleep</Typography>
         <Button onClick={handleOuraRing}>Collect Data Through Oura Ring</Button>
       </div>
-      <div style={{ margin: "20px 0px" }}>
+      <div
+        style={{
+          margin: "50px 0px",
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <Button onClick={handleGoodSleepSample}>Good Sleep Sample</Button>
         <Button onClick={handleAverageSleepSample}>Average Sleep Sample</Button>
         <Button onClick={handlePoorSleepSample}>Poor Sleep Sample</Button>
@@ -273,23 +280,28 @@ export function Step4(props) {
           }/${date.getDate()}/${date.getFullYear()}`;
 
           return (
-            <div key={index} style={{ marginBottom: "10px" }}>
+            <div
+              key={index}
+              style={{
+                marginBottom: "10px",
+                display: "flex",
+                width: "100%",
+                justifyContent: "space-between",
+              }}
+            >
               <Typography variant="body1">{formattedDate}</Typography>
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <div style={{ display: "flex" }}>
                 <Typography variant="body1" style={{ marginRight: "10px" }}>
-                  REM: {night.remTime}
+                  REM: {Math.floor(night.remTime / 60)} hr {night.remTime % 60}{" "}
+                  min
                 </Typography>
                 <Typography variant="body1" style={{ marginRight: "10px" }}>
-                  Deep: {night.deepTime}
-                </Typography>
-                <Typography variant="body1" style={{ marginRight: "10px" }}>
-                  Heart Rate: {night.heartRate}
-                </Typography>
-                <Typography variant="body1" style={{ marginRight: "10px" }}>
-                  HRV: {night.heartRateVariability}
+                  Deep: {Math.floor(night.deepTime / 60)} hr{" "}
+                  {night.deepTime % 60} min
                 </Typography>
                 <Typography variant="body1">
-                  Total Time: {night.totalTime}
+                  Total Time: {Math.floor(night.totalTime / 60)} hr{" "}
+                  {night.totalTime % 60} min
                 </Typography>
               </div>
             </div>
