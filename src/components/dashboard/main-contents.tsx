@@ -32,7 +32,7 @@ const MainContent: React.FC<MainContentProps> = ({ toggleRightPanel, isRightPane
         </Box>
       </Box>
 
-      {/* DNA Overview Card */}
+      {/* DNA Overview */}
       <Card sx={{ mt: 4, borderRadius: 4, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)' }}>
         <CardContent>
           <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold', color: '#333' }}>
