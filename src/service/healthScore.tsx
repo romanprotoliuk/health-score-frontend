@@ -160,7 +160,6 @@ export function getHealthScore(
   }
 
   const bmiResult = getBmiScore(weight, height, weightUnit, heightUnit, inches);
-  console.log(bmiResult)
   const bloodPressureResult = getBloodPressureScore(systolicBP, diastolicBP);
   const smokingResult = getSmokingScore(smokingStatus);
   const glucoseResult = getGlucoseLevelsScore(glucoseLevels);

@@ -3,7 +3,7 @@ import MultiStepForm from "../multistepform/MultiStepForm";
 const HealthForm = () => {
     return (
         <div>
-            <MultiStepForm></MultiStepForm>
+            <MultiStepForm />
         </div>
     )
 }

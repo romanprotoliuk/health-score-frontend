@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { useAuth } from "../common/AuthProvider";
 import { UserProfileContext } from "../../context/UserProfile";
-import { Typography } from "@mui/material";
 import "./Menu.css";
 
 const StyledLink = styled(Link)({
