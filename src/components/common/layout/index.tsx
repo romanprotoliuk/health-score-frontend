@@ -5,7 +5,6 @@ import Menu from "../../menu/Menu";
 const Layout: React.FC<{}> = () => {
   return (
     <div style={{width: "100%", padding: "20px 0px 20px 0px"}}>
-        <Menu />
         <Outlet />
     </div>
   );
