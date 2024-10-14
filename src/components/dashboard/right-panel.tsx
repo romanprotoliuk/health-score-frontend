@@ -1,49 +1,139 @@
 import React from "react";
-import { Box, Typography, Paper, Grid } from "@mui/material";
-import { motion } from "framer-motion";  // Import framer-motion
+import { Box, Typography, Paper, Button, Grid, Divider } from "@mui/material";
+import { motion } from "framer-motion";
+import {
+  Favorite,
+  Assessment,
+  HeartBroken,
+  EventNote,
+} from "@mui/icons-material";
 
 const RightPanel: React.FC = () => {
   return (
     <motion.div
-      initial={{ x: '100%' }} // Start off the screen to the right
-      animate={{ x: 0 }}      // Slide in when shown
-      exit={{ x: '100%' }}     // Slide out when hidden
-      transition={{ type: 'spring', stiffness: 100, damping: 20 }}  // Smooth spring animation
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "100%" }}
+      transition={{ type: "spring", stiffness: 100, damping: 20 }}
       style={{ width: 320 }}
     >
       <Box
         sx={{
-          padding: 4,
+          padding: 3,
           backgroundColor: "#F4F5FB",
           boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
           borderRadius: 4,
-          height: "100vh", // Ensure it spans the full height
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
         }}
       >
-        <Box>
-          <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#333' }}>
+        {/* Heart Rate Section */}
+        <Box sx={{ mb: 4 }}>
+          <Typography variant="h5" sx={{ fontWeight: "bold", color: "#333" }}>
             Heart Rate
           </Typography>
-          <Typography variant="h3" sx={{ fontWeight: 'bold', color: '#7B61FF' }}>
+          <Typography
+            variant="h3"
+            sx={{ fontWeight: "bold", color: "#7B61FF" }}
+          >
             92 bpm
           </Typography>
-          <Typography variant="caption" sx={{ color: '#999' }}>
+          <Typography variant="body2" sx={{ color: "#999", mt: 1 }}>
             The cause of heart palpitations is hereditary tachycardia.
           </Typography>
         </Box>
+        {/* Sidebar Icon Navigation */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            mb: 4,
+          }}
+        >
+          <Button
+            startIcon={<Assessment />}
+            sx={{
+              color: "#7B61FF",
+              mb: 2,
+              justifyContent: "start",
+              width: "100%",
+            }}
+          >
+            DNA Overview
+          </Button>
+          <Button
+            startIcon={<Favorite />}
+            sx={{
+              color: "#7B61FF",
+              mb: 2,
+              justifyContent: "start",
+              width: "100%",
+            }}
+          >
+            Health Score
+          </Button>
+          <Button
+            startIcon={<HeartBroken />}
+            sx={{
+              color: "#7B61FF",
+              mb: 2,
+              justifyContent: "start",
+              width: "100%",
+            }}
+          >
+            Health Status
+          </Button>
+          <Button
+            startIcon={<EventNote />}
+            sx={{ color: "#7B61FF", justifyContent: "start", width: "100%" }}
+          >
+            Health Plans
+          </Button>
+        </Box>
 
-        <Box sx={{ mt: 4 }}>
-          <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#333' }}>
-            Researches
-          </Typography>
+        <Divider sx={{ my: 2 }} />
+
+        {/* Research/Consult Section - Clean & Compact */}
+        <Box sx={{ mt: 2 }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Paper sx={{ padding: 2, backgroundColor: "#fff", borderRadius: 2 }}>
-                <Typography variant="subtitle1" sx={{ color: '#7B61FF' }}>
+              <Paper
+                sx={{
+                  padding: 2,
+                  backgroundColor: "#fff",
+                  borderRadius: 2,
+                  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.05)",
+                }}
+              >
+                <Typography
+                  variant="subtitle1"
+                  sx={{ color: "#7B61FF", fontWeight: "bold" }}
+                >
                   Diagnosis of genetic diseases
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#999' }}>
+                <Typography variant="caption" sx={{ color: "#999" }}>
                   Calculating the risk of diseases
+                </Typography>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Paper
+                sx={{
+                  padding: 2,
+                  backgroundColor: "#fff",
+                  borderRadius: 2,
+                  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.05)",
+                }}
+              >
+                <Typography
+                  variant="subtitle1"
+                  sx={{ color: "#7B61FF", fontWeight: "bold" }}
+                >
+                  Consult Now
                 </Typography>
               </Paper>
             </Grid>
