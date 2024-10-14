@@ -25,3 +25,6 @@ const App = () => {
 };
 
 export default App;
+
+
+// old version of the app
